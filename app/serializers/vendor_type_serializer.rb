@@ -1,4 +1,4 @@
 class VendorTypeSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :name, :img, :id
 end

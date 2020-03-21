@@ -3,13 +3,13 @@ class Api::V1::VendorsController < ApplicationController
     
     def index 
         @vendors = @vendor_type.vendors 
-        render json: @vendor
+        render json: VendorSerializer.new(@vendors)
     end 
 
     def create 
         @vendor = @vendor_type.vendors.new(vendor_params)
         if @vendor.save 
-            render json: @vendor
+            render json: VendorSerializer.new(@vendor)
         else 
             render json: {error: "Error creating vendor type" }
         end 
@@ -17,7 +17,7 @@ class Api::V1::VendorsController < ApplicationController
 
     def show 
         @vendor = Vendor.find(params[:id])
-        render json: @vendor
+        render json: VendorSerializer.new(@vendor)
     end 
 
     def destroy 
