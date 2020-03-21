@@ -7,7 +7,7 @@ class Api::V1::VendorsController < ApplicationController
     end 
 
     def create 
-        @vendor = Vendor.new(vendor_params)
+        @vendor = @vendor_type.vendors.new(vendor_params)
         if @vendor.save 
             render json: @vendor
         else 
