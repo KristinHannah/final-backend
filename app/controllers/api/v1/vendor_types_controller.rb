@@ -1,5 +1,7 @@
 class Api::V1::VendorTypesController < ApplicationController
 
+    skip_before_action :verify_authenticity_token
+
     def index 
         @vendor_types = VendorType.all 
         render json: VendorTypeSerializer.new(@vendor_types)

@@ -1,5 +1,6 @@
 class Api::V1::VendorsController < ApplicationController
-   before_action :set_vendor_type
+  before_action :set_vendor_type
+  skip_before_action :verify_authenticity_token
     
     def index 
         @vendors = @vendor_type.vendors 
