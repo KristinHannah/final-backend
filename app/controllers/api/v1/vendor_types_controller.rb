@@ -3,9 +3,11 @@ class Api::V1::VendorTypesController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def index 
-        @vendor_types = VendorType.all 
-        render json: VendorTypeSerializer.new(@vendor_types)
-
+        vendor_types = VendorType.all 
+        # options = {} 
+        # options[:include] = [:vendors, :'vendor.name', :'vendor.location', :'vendor.quote', :'vendor.availability']
+        render json: VendorTypeSerializer.new(vendor_types).serializable_hash
+        # vendor_types.to_json
     end 
 
     def create 
@@ -18,8 +20,12 @@ class Api::V1::VendorTypesController < ApplicationController
     end 
 
     def show 
-        @vendor_type = VendorType.find(params[:id])
-        render json: VendorTypeSerializer.new(@vendor_type)
+        vendor_type = VendorType.find(params[:id])
+       # options = {} 
+       # options[:include] = [:vendors, :'vendor.name', :'vendor.location', :'vendor.quote', :'vendor.availability']
+        render json: VendorTypeSerializer.new(vendor_type).serializable_hash
+        # vendor_type.to_json(:include => {:vendors => {:only => [:name, :location, :availability,:quote]}})
+       # VendorTypeSerializer.new(@vendor_type)
     end 
 
     def destroy 
