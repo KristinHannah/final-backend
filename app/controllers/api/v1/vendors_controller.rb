@@ -36,7 +36,7 @@ class Api::V1::VendorsController < ApplicationController
     end 
 
     def vendor_params
-        params.require(:vendor).permit(:name, :location, :availability, :quote, :vendor_type_id)
+        params.require(:vendor).permit(:name, :location, :availability, :quote, :hired, :vendor_type_id)
     end 
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_230706) do
+ActiveRecord::Schema.define(version: 2020_04_17_184918) do
 
   create_table "vendor_types", force: :cascade do |t|
     t.string "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_03_18_230706) do
     t.integer "vendor_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "hired", default: false
   end
 
 end
