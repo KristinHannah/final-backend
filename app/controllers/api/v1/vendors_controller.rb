@@ -21,6 +21,13 @@ class Api::V1::VendorsController < ApplicationController
         render json: VendorSerializer.new(@vendor)
     end 
 
+    def update 
+        @vendor = @vendor_type.vendors.find(params[:id])
+        @vendor.update(hired: params["vendor"]["hired"])
+        @vendor.save
+        render json: VendorTypeSerializer.new(@vendor_type)
+    end 
+
     def destroy 
         @vendor = Vendor.find(params[:id])
         @vendorType = VendorType.find(@vendor.vendor_type_id)

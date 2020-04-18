@@ -4,10 +4,7 @@ class Api::V1::VendorTypesController < ApplicationController
 
     def index 
         vendor_types = VendorType.all 
-        # options = {} 
-        # options[:include] = [:vendors, :'vendor.name', :'vendor.location', :'vendor.quote', :'vendor.availability']
         render json: VendorTypeSerializer.new(vendor_types).serializable_hash
-        # vendor_types.to_json
     end 
 
     def create 
@@ -21,11 +18,7 @@ class Api::V1::VendorTypesController < ApplicationController
 
     def show 
         vendor_type = VendorType.find(params[:id])
-       # options = {} 
-       # options[:include] = [:vendors, :'vendor.name', :'vendor.location', :'vendor.quote', :'vendor.availability']
         render json: VendorTypeSerializer.new(vendor_type).serializable_hash
-        # vendor_type.to_json(:include => {:vendors => {:only => [:name, :location, :availability,:quote]}})
-       # VendorTypeSerializer.new(@vendor_type)
     end 
 
     def destroy 
